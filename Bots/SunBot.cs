@@ -1,37 +1,33 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using WeatherMonitoringAndReportingService.BotConfigurations;
 using WeatherMonitoringAndReportingService.Interfaces;
-using WeatherMonitoringAndReportingService.WeatherDataModels;
 
 namespace WeatherMonitoringAndReportingService.Bots
 {
     public class SunBot : IWeatherBot
     {
-        private readonly BotConfiguration _config;
+        private readonly BotConfiguration _configuration;
 
-        public SunBot(BotConfiguration config)
+        public SunBot(BotConfiguration configuration)
         {
-            _config = config;
+            _configuration = configuration;
         }
 
-        public void CheckWeather(WeatherDataJson data)
+        public string Message => _configuration.Message;
+        public bool Enabled => _configuration.Enabled;
+
+        public void CheckWeather(double humidity, double temperature)
         {
-            if (_config.Enabled && data.Temperature > _config.Threshold)
+            try
             {
-                Console.WriteLine("SunBot activated!");
-                Console.WriteLine($"SunBot: \"{_config.Message}\"");
+                if (_configuration != null && _configuration.Enabled && _configuration.TemperatureThreshold.HasValue && temperature >= _configuration.TemperatureThreshold)
+                {
+                    Console.WriteLine(_configuration.Message);
+                }
             }
-        }
-
-        public void CheckWeather(WeatherDataXml data)
-        {
-            if (_config.Enabled && data.Temperature > _config.Threshold)
+            catch (Exception ex)
             {
-                Console.WriteLine("SunBot activated!");
-                Console.WriteLine($"SunBot: \"{_config.Message}\"");
+                Console.WriteLine($"An error occurred while checking weather for SunBot: {ex.Message}");
             }
         }
     }

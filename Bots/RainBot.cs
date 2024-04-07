@@ -1,35 +1,33 @@
-﻿
+﻿using System;
+using WeatherMonitoringAndReportingService.BotConfigurations;
 using WeatherMonitoringAndReportingService.Interfaces;
-using WeatherMonitoringAndReportingService.WeatherDataModels;
-using WeatherMonitoringAndReportingService.BotConfiguration;
-
 
 namespace WeatherMonitoringAndReportingService.Bots
 {
     public class RainBot : IWeatherBot
     {
-        private readonly BotConfiguration _config;
+        private readonly BotConfiguration _configuration;
 
-        public RainBot(BotConfiguration config)
+        public RainBot(BotConfiguration configuration)
         {
-            _config = config;
+            _configuration = configuration;
         }
 
-        public void CheckWeather(WeatherDataJson data)
+        public string Message => _configuration.Message;
+        public bool Enabled => _configuration.Enabled;
+
+        public void CheckWeather(double humidity, double temperature)
         {
-            if (_config.Enabled && data.Humidity > _config.Threshold)
+            try
             {
-                Console.WriteLine("RainBot activated!");
-                Console.WriteLine($"RainBot: \"{_config.Message}\"");
+                if (_configuration != null && _configuration.Enabled && _configuration.HumidityThreshold.HasValue && humidity >= _configuration.HumidityThreshold)
+                {
+                    Console.WriteLine(_configuration.Message);
+                }
             }
-        }
-
-        public void CheckWeather(WeatherDataXml data)
-        {
-            if (_config.Enabled && data.Humidity > _config.Threshold)
+            catch (Exception ex)
             {
-                Console.WriteLine("RainBot activated!");
-                Console.WriteLine($"RainBot: \"{_config.Message}\"");
+                Console.WriteLine($"An error occurred while checking weather for RainBot: {ex.Message}");
             }
         }
     }

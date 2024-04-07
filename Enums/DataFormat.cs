@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WeatherMonitoringAndReportingService.WeatherDataModels
+namespace WeatherMonitoringAndReportingService.Enums
 {
-    public class WeatherDataJson
+    public enum DataFormat
     {
+        Json =1 ,
+        Xml =2
     }
 }
