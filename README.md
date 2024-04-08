@@ -2,25 +2,8 @@
 
 Design and implement a C# console application that simulates a real-time weather monitoring and reporting service. The system should be capable of receiving and processing raw weather data in multiple formats (JSON, XML, etc.) from various weather stations for different locations. The application should include different types of 'weather bots' each of which is configured to behave differently based on the weather updates it receives.
 📋 Supported Input Formats:
-JSON Format:
-
-json
-
-{
-  "Location": "City Name",
-  "Temperature": 23.0,
-  "Humidity": 85.0
-}
-
-XML Format:
-
-xml
-
-<WeatherData>
-  <Location>City Name</Location>
-  <Temperature>23.0</Temperature>
-  <Humidity>85.0</Humidity>
-</WeatherData>
+JSON Format
+XML Format
 
 The system should allow for the addition of new data formats with minimal changes to the existing code, demonstrating the Open-Closed principle of SOLID design principles.
 🤖 Different Bot Types:
@@ -47,25 +30,6 @@ SunBot: "Wow, it's a scorcher out there!"
 
 All the bot's settings should be controlled via a configuration file, including whether it is enabled, the threshold that activates it, and the message it outputs when activated. The configuration file should be in a JSON format. Here is an example:
 
-json
-
-{
-  "RainBot": {
-    "enabled": true,
-    "humidityThreshold": 70,
-    "message": "It looks like it's about to pour down!"
-  },
-  "SunBot": {
-    "enabled": true,
-    "temperatureThreshold": 30,
-    "message": "Wow, it's a scorcher out there!"
-  },
-  "SnowBot": {
-    "enabled": false,
-    "temperatureThreshold": 0,
-    "message": "Brrr, it's getting chilly!"
-  }
-}
 
 In this example, the enabled property turns the bot on or off, the humidityThreshold or temperatureThreshold sets the limit that will activate the bot, and message is what the bot will output when it is activated.
 
