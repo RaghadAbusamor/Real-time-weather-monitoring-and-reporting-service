@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO; // Added namespace
-using System.Threading.Tasks;
+﻿
 using WeatherMonitoringAndReportingService.BotConfigurations;
 using WeatherMonitoringAndReportingService.Bots;
 using WeatherMonitoringAndReportingService.Enums;
@@ -21,26 +19,12 @@ namespace WeatherMonitoringAndReportingService
         public async Task Start()
         {
             DisplayWelcomeMessage();
-      //      await LoadBotConfigurations();
             ChooseDataFormat();
         }
 
         private void DisplayWelcomeMessage()
         {
             Console.WriteLine("Welcome to the Weather Monitoring and Reporting Service!");
-        }
-
-        private async Task LoadBotConfigurations()
-        {
-            try
-            {
-                await Task.Run(() => _configurations.Load("C:\\Users\\ragha\\OneDrive\\Desktop\\FTS-Internship\\WeatherMonitoringAndReportingService\\BotConfigurations\\config.json"));
-                Console.WriteLine("Bot configurations loaded successfully.");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An error occurred while loading bot configurations: {ex.Message}");
-            }
         }
 
         private void ChooseDataFormat()
@@ -53,10 +37,10 @@ namespace WeatherMonitoringAndReportingService
                 switch (format)
                 {
                     case DataFormat.Json:
-                        ReadFromJsonAsync().Wait(); // Wait for completion
+                        ReadFromJsonAsync().Wait(); 
                         break;
                     case DataFormat.Xml:
-                        ReadFromXmlAsync().Wait(); // Wait for completion
+                        ReadFromXmlAsync().Wait(); 
                         break;
                 }
             }
@@ -95,27 +79,25 @@ namespace WeatherMonitoringAndReportingService
 
         private async Task ReadFromXmlAsync()
         {
-            Console.WriteLine("Enter file path for XML data:");
-            string filePath = Console.ReadLine()?.Trim();
-
-            if (File.Exists(filePath))
+            try
             {
-                XMLOperations<WeatherData> xmlOperations = new XMLOperations<WeatherData>();
-                WeatherData weatherData = await xmlOperations.Parse(filePath);
+                Console.WriteLine("Enter file path for XML data:");
+                string filePath = Console.ReadLine()?.Trim();
 
-                if (weatherData != null)
+                if (File.Exists(filePath))
                 {
-                    await CheckWeatherForBotsAsync(weatherData);
+                    string xmlContent = await File.ReadAllTextAsync(filePath); // Read the content of the XML file
+                    XMLOperations<WeatherData> xmlOperations = new XMLOperations<WeatherData>();
+                    WeatherData weatherData = await xmlOperations.Parse(xmlContent); // Pass the XML content to the Parse method
                 }
                 else
                 {
-                    Console.WriteLine("Failed to parse weather data.");
+                    Console.WriteLine($"File '{filePath}' does not exist.");
                 }
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine($"File '{filePath}' does not exist.");
-                await ReadFromXmlAsync(); 
+                Console.WriteLine($"An error occurred: {ex.Message}");
             }
         }
 

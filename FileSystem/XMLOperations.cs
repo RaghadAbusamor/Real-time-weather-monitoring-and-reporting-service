@@ -1,4 +1,5 @@
-﻿using System.Xml.Serialization;
+﻿using System.Xml.Linq;
+using System.Xml.Serialization;
 using WeatherMonitoringAndReportingService.Interfaces;
 using WeatherMonitoringAndReportingService.WeatherDataModels;
 
@@ -10,6 +11,8 @@ namespace WeatherMonitoringAndReportingService.FileSystem
         {
             try
             {
+                Console.WriteLine("XML Content before deserialization:");
+                Console.WriteLine(input); // Log or print the XML content before deserialization
                 return await Task.Run(() =>
                 {
                     var serial = new XmlSerializer(typeof(WeatherData));
@@ -23,6 +26,7 @@ namespace WeatherMonitoringAndReportingService.FileSystem
                 return default;
             }
         }
+
         public void WriteWeatherData(List<T> weatherDataList, string filePath)
         {
             try
