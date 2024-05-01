@@ -1,5 +1,4 @@
-﻿using System;
-using WeatherMonitoringAndReportingService.BotConfigurations;
+﻿using WeatherMonitoringAndReportingService.BotConfigurations;
 using WeatherMonitoringAndReportingService.Interfaces;
 
 namespace WeatherMonitoringAndReportingService.Bots
@@ -27,7 +26,8 @@ namespace WeatherMonitoringAndReportingService.Bots
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred while checking weather for SunBot: {ex.Message}");
+                throw new Exception($"An error occurred while checking weather for SunBot: {ex.Message}");
+
             }
         }
     }

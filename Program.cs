@@ -1,5 +1,4 @@
-﻿using System;
-using WeatherMonitoringAndReportingService.BotConfigurations;
+﻿using WeatherMonitoringAndReportingService.BotConfigurations;
 
 namespace WeatherMonitoringAndReportingService
 {

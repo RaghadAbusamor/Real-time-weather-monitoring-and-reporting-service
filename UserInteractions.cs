@@ -37,10 +37,10 @@ namespace WeatherMonitoringAndReportingService
                 switch (format)
                 {
                     case DataFormat.Json:
-                        ReadFromJsonAsync().Wait(); 
+                        ReadFromJsonAsync().Wait();
                         break;
                     case DataFormat.Xml:
-                        ReadFromXmlAsync().Wait(); 
+                        ReadFromXmlAsync().Wait();
                         break;
                 }
             }

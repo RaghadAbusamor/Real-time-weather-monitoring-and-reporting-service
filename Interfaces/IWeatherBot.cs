@@ -1,6 +1,4 @@
-﻿using WeatherMonitoringAndReportingService.WeatherDataModels;
-
-namespace WeatherMonitoringAndReportingService.Interfaces
+﻿namespace WeatherMonitoringAndReportingService.Interfaces
 {
     public interface IWeatherBot
     {

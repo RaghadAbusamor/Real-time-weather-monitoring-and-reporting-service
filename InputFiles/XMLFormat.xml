@@ -1,6 +1,13 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<WeatherData>
-	<Location>City Name</Location>
-	<Temperature>23.0</Temperature>
-	<Humidity>85.0</Humidity>
-</WeatherData>
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfWeatherData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <WeatherData>
+    <Location>New York</Location>
+    <Temperature>25</Temperature>
+    <Humidity>0</Humidity>
+  </WeatherData>
+  <WeatherData>
+    <Location>London</Location>
+    <Temperature>20</Temperature>
+    <Humidity>0</Humidity>
+  </WeatherData>
+</ArrayOfWeatherData>
