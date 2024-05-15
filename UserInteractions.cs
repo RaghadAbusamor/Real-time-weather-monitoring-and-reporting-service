@@ -1,17 +1,19 @@
-﻿
-using WeatherMonitoringAndReportingService.BotConfigurations;
-using WeatherMonitoringAndReportingService.Bots;
+﻿using System.Reflection;
+using WeatherMonitoringAndReportingService.Attributes;
 using WeatherMonitoringAndReportingService.Enums;
 using WeatherMonitoringAndReportingService.FileSystem;
-using WeatherMonitoringAndReportingService.WeatherDataModels;
+using WeatherMonitoringAndReportingService.Models;
+using WeatherMonitoringAndReportingService.Models.WeatherDataModels;
+using WeatherMonitoringAndReportingService.Services.BotConfigurationsServices;
+
 
 namespace WeatherMonitoringAndReportingService
 {
     public class UserInteractions
     {
-        private readonly WeatherBotConfigurations _configurations;
+        private readonly WeatherBotConfigurationsServices _configurations;
 
-        public UserInteractions(WeatherBotConfigurations configurations)
+        public UserInteractions(WeatherBotConfigurationsServices configurations)
         {
             _configurations = configurations;
         }
@@ -37,10 +39,10 @@ namespace WeatherMonitoringAndReportingService
                 switch (format)
                 {
                     case DataFormat.Json:
-                        ReadFromJsonAsync().Wait(); 
+                        ReadFromJsonAsync().Wait();
                         break;
                     case DataFormat.Xml:
-                        ReadFromXmlAsync().Wait(); 
+                        ReadFromXmlAsync().Wait();
                         break;
                 }
             }
@@ -59,7 +61,7 @@ namespace WeatherMonitoringAndReportingService
             if (File.Exists(filePath))
             {
                 JSONOperations<WeatherData> jsonOperations = new JSONOperations<WeatherData>();
-                WeatherData weatherData = await jsonOperations.Parse(filePath);
+                WeatherData weatherData = await jsonOperations.ParseAsync(filePath);
 
                 if (weatherData != null)
                 {
@@ -88,7 +90,7 @@ namespace WeatherMonitoringAndReportingService
                 {
                     string xmlContent = await File.ReadAllTextAsync(filePath); // Read the content of the XML file
                     XMLOperations<WeatherData> xmlOperations = new XMLOperations<WeatherData>();
-                    WeatherData weatherData = await xmlOperations.Parse(xmlContent); // Pass the XML content to the Parse method
+                    WeatherData weatherData = await xmlOperations.ParseAsync(xmlContent); // Pass the XML content to the Parse method
                 }
                 else
                 {
@@ -101,15 +103,25 @@ namespace WeatherMonitoringAndReportingService
             }
         }
 
+
         private async Task CheckWeatherForBotsAsync(WeatherData weatherData)
         {
-            SunBot sunBot = new SunBot(_configurations.SunBot);
-            RainBot rainBot = new RainBot(_configurations.RainBot);
-            SnowBot snowBot = new SnowBot(_configurations.SnowBot);
+            // Get all types in the assembly
+            var botTypes = Assembly.GetExecutingAssembly().GetTypes()
+                // Filter types that are subclasses of WeatherBotBase
+                .Where(t => typeof(BotConfiguration).IsAssignableFrom(t) && !t.IsAbstract)
+                // Filter types that have the BotTypeAttribute
+                .Where(t => t.GetCustomAttribute<BotTypeAttribute>() != null)
+                // Select the types that match the bot type from the configuration
+                .Where(t => _configurations.SunBot.BotType.Equals(t.GetCustomAttribute<BotTypeAttribute>().Type));
 
-            sunBot.CheckWeather(weatherData.Humidity, weatherData.Temperature);
-            rainBot.CheckWeather(weatherData.Humidity, weatherData.Temperature);
-            snowBot.CheckWeather(weatherData.Humidity, weatherData.Temperature);
+            foreach (var botType in botTypes)
+            {
+                // Instantiate the bot dynamically
+                var bot = Activator.CreateInstance(botType, _configurations.SunBot) as BotConfiguration;
+                // Call the CheckWeather method
+                bot?.CheckWeather(weatherData);
+            }
         }
     }
 }

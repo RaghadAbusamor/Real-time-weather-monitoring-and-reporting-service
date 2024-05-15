@@ -1,14 +1,11 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.IO;
-using System.Threading.Tasks;
 using WeatherMonitoringAndReportingService.Interfaces;
 
 namespace WeatherMonitoringAndReportingService.FileSystem
 {
     public class JSONOperations<T> : IInputFormat<T>
     {
-        public  async Task<T?> Parse(string filePath)
+        public async Task<T?> ParseAsync(string filePath)
         {
             try
             {
@@ -23,7 +20,7 @@ namespace WeatherMonitoringAndReportingService.FileSystem
             catch (Exception ex)
             {
                 Console.WriteLine($"An error occurred while parsing JSON from file: {ex.Message}");
-                return default; 
+                return default;
             }
         }
 
