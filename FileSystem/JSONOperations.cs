@@ -5,7 +5,11 @@ namespace WeatherMonitoringAndReportingService.FileSystem
 {
     public class JSONOperations<T> : IInputFormat<T>
     {
+<<<<<<< HEAD
         public async Task<T?> Parse2(string filePath)
+=======
+        public async Task<T?> ParseAsync(string filePath)
+>>>>>>> Dev
         {
             try
             {

@@ -1,13 +1,18 @@
+<<<<<<< HEAD:Bots/SnowBot.cs
 ﻿using WeatherMonitoringAndReportingService.BotConfigurations;
 using WeatherMonitoringAndReportingService.Interfaces;
+=======
+﻿using WeatherMonitoringAndReportingService.Models;
+using WeatherMonitoringAndReportingService.Services.BotConfigurationsServices;
+>>>>>>> Dev:Services/BotsServices/SnowBotServices.cs
 
-namespace WeatherMonitoringAndReportingService.Bots
+namespace WeatherMonitoringAndReportingService.Services.BotsServices
 {
-    public class SnowBot : IWeatherBot
+    public class SnowBotServices : CheckWeatherService
     {
         private readonly BotConfiguration _configuration;
 
-        public SnowBot(BotConfiguration configuration)
+        public SnowBotServices(BotConfiguration configuration)
         {
             _configuration = configuration;
         }
@@ -15,11 +20,11 @@ namespace WeatherMonitoringAndReportingService.Bots
         public string Message => _configuration.Message;
         public bool Enabled => _configuration.Enabled;
 
-        public void CheckWeather(double humidity, double temperature)
+        public override void CheckWeather(double Threshold)
         {
             try
             {
-                if (_configuration != null && _configuration.Enabled && _configuration.TemperatureThreshold.HasValue && temperature <= _configuration.TemperatureThreshold)
+                if (_configuration != null && _configuration.Enabled && Threshold <= _configuration.Threshold)
                 {
                     Console.WriteLine(_configuration.Message);
                 }

@@ -1,12 +1,12 @@
 ﻿using System.Xml.Serialization;
 using WeatherMonitoringAndReportingService.Interfaces;
-using WeatherMonitoringAndReportingService.WeatherDataModels;
+using WeatherMonitoringAndReportingService.Models.WeatherDataModels;
 
 namespace WeatherMonitoringAndReportingService.FileSystem
 {
     public class XMLOperations<T> : IInputFormat<T>
     {
-        public async Task<T?> Parse(string input)
+        public async Task<T?> ParseAsync(string input)
         {
             try
             {
