@@ -11,7 +11,7 @@
   },
   "SnowBot": {
     "enabled": true,
-    "temperatureThreshold": 30,
+    "temperatureThreshold": 0,
     "message": "Brrr, it's getting chilly!"
   }
 }

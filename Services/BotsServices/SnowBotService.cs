@@ -3,18 +3,14 @@ using WeatherMonitoringAndReportingService.Services.BotConfigurationsServices;
 
 namespace WeatherMonitoringAndReportingService.Services.BotsServices
 {
-    public class SnowBotServices : CheckWeatherService
+    public class SnowBotService : CheckWeatherService
     {
         private readonly BotConfiguration _configuration;
 
-        public SnowBotServices(BotConfiguration configuration)
+        public SnowBotService(BotConfiguration configuration)
         {
             _configuration = configuration;
         }
-
-        public string Message => _configuration.Message;
-        public bool Enabled => _configuration.Enabled;
-
         public override void CheckWeather(double Threshold)
         {
             try

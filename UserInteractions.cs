@@ -1,19 +1,18 @@
-﻿using System.Reflection;
-using WeatherMonitoringAndReportingService.Attributes;
-using WeatherMonitoringAndReportingService.Enums;
+﻿using WeatherMonitoringAndReportingService.Enums;
 using WeatherMonitoringAndReportingService.FileSystem;
 using WeatherMonitoringAndReportingService.Models;
 using WeatherMonitoringAndReportingService.Models.WeatherDataModels;
 using WeatherMonitoringAndReportingService.Services.BotConfigurationsServices;
+using WeatherMonitoringAndReportingService.Services.BotsServices;
 
 
 namespace WeatherMonitoringAndReportingService
 {
     public class UserInteractions
     {
-        private readonly WeatherBotConfigurationsServices _configurations;
+        public readonly WeatherBotConfigurations _configurations;
 
-        public UserInteractions(WeatherBotConfigurationsServices configurations)
+        public UserInteractions(WeatherBotConfigurations configurations)
         {
             _configurations = configurations;
         }
@@ -103,25 +102,19 @@ namespace WeatherMonitoringAndReportingService
             }
         }
 
-
         private async Task CheckWeatherForBotsAsync(WeatherData weatherData)
         {
-            // Get all types in the assembly
-            var botTypes = Assembly.GetExecutingAssembly().GetTypes()
-                // Filter types that are subclasses of WeatherBotBase
-                .Where(t => typeof(BotConfiguration).IsAssignableFrom(t) && !t.IsAbstract)
-                // Filter types that have the BotTypeAttribute
-                .Where(t => t.GetCustomAttribute<BotTypeAttribute>() != null)
-                // Select the types that match the bot type from the configuration
-                .Where(t => _configurations.SunBot.BotType.Equals(t.GetCustomAttribute<BotTypeAttribute>().Type));
+            var bots = WeatherBotConfigurationsServices.Load("C:\\Users\\ragha\\OneDrive\\Desktop\\FTS-Internship\\WeatherMonitoringAndReportingService\\Services\\BotConfigurationsServices\\config.json"); // Load the bot configurations
 
-            foreach (var botType in botTypes)
-            {
-                // Instantiate the bot dynamically
-                var bot = Activator.CreateInstance(botType, _configurations.SunBot) as BotConfiguration;
-                // Call the CheckWeather method
-                bot?.CheckWeather(weatherData);
-            }
+            var rainBotService = new RainBotService(bots.RainBot);
+            var sunBotService = new SunBotService(bots.SunBot);
+            var snowBotService = new SnowBotService(bots.SnowBot);
+
+            rainBotService.CheckWeather(weatherData.Humidity);
+            sunBotService.CheckWeather(weatherData.Temperature);
+            snowBotService.CheckWeather(weatherData.Temperature);
+
+           await Task.CompletedTask; 
         }
     }
 }

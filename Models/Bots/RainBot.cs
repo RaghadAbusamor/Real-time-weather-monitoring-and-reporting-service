@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
-using WeatherMonitoringAndReportingService.Attributes;
 
 namespace WeatherMonitoringAndReportingService.Models.Bots
 {
-    [BotType("RainBot")]
+    
     public class RainBot : BotConfiguration
     {
         [JsonProperty("humidity_threshold")]

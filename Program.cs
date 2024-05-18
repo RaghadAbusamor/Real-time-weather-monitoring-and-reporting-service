@@ -6,7 +6,7 @@ namespace WeatherMonitoringAndReportingService
     {
         public static async Task Main(string[] args)
         {
-            var weatherBotConfiguration = WeatherBotConfigurationsServices.Load("C:\\Users\\ragha\\OneDrive\\Desktop\\FTS-Internship\\WeatherMonitoringAndReportingService\\BotConfigurations\\config.json");
+            var weatherBotConfiguration = WeatherBotConfigurationsServices.Load("C:\\Users\\ragha\\OneDrive\\Desktop\\FTS-Internship\\WeatherMonitoringAndReportingService\\Services\\BotConfigurationsServices\\config.json");
             var userInteractions = new UserInteractions(weatherBotConfiguration);
             await userInteractions.Start();
             Console.WriteLine("Press any key to exit...");

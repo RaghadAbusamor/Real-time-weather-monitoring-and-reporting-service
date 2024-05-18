@@ -1,9 +1,7 @@
 ﻿using Newtonsoft.Json;
-using WeatherMonitoringAndReportingService.Attributes;
 
 namespace WeatherMonitoringAndReportingService.Models.Bots
 {
-    [BotType("SnowBot")]
     public class SnowBot : BotConfiguration
     {
         [JsonProperty("temperature_threshold")]

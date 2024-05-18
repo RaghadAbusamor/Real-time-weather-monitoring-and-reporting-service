@@ -4,7 +4,7 @@ namespace WeatherMonitoringAndReportingService.Services.BotConfigurationsService
 {
     public class CheckWeatherService
     {
-        protected BotConfiguration Configuration { get; }
+        public BotConfiguration Configuration { get; }
         public virtual void CheckWeather(double threshold)
         {
             try
@@ -16,7 +16,7 @@ namespace WeatherMonitoringAndReportingService.Services.BotConfigurationsService
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred while checking weather for SunBot: {ex.Message}");
+                Console.WriteLine($"An error occurred while checking weather: {ex.Message}");
             }
         }
     }

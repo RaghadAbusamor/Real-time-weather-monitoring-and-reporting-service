@@ -1,10 +1,11 @@
 ﻿using Newtonsoft.Json;
+using WeatherMonitoringAndReportingService.Models;
 
 namespace WeatherMonitoringAndReportingService.Services.BotConfigurationsServices
 {
     public class WeatherBotConfigurationsServices
     {
-        public static WeatherBotConfigurationsServices Load(string filePath)
+        public static WeatherBotConfigurations Load(string filePath)
         {
             if (!File.Exists(filePath))
             {
@@ -12,7 +13,7 @@ namespace WeatherMonitoringAndReportingService.Services.BotConfigurationsService
             }
 
             string jsonContent = File.ReadAllText(filePath);
-            return JsonConvert.DeserializeObject<WeatherBotConfigurationsServices>(jsonContent);
+            return JsonConvert.DeserializeObject<WeatherBotConfigurations>(jsonContent);
         }
     }
 }
