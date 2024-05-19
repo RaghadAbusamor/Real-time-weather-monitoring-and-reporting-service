@@ -104,11 +104,9 @@ namespace WeatherMonitoringAndReportingService
 
         private async Task CheckWeatherForBotsAsync(WeatherData weatherData)
         {
-            var bots = WeatherBotConfigurationsServices.Load("C:\\Users\\ragha\\OneDrive\\Desktop\\FTS-Internship\\WeatherMonitoringAndReportingService\\Services\\BotConfigurationsServices\\config.json"); // Load the bot configurations
-
-            var rainBotService = new RainBotService(bots.RainBot);
-            var sunBotService = new SunBotService(bots.SunBot);
-            var snowBotService = new SnowBotService(bots.SnowBot);
+            var rainBotService = new RainBotService(_configurations.RainBot);
+            var sunBotService = new SunBotService(_configurations.SunBot);
+            var snowBotService = new SnowBotService(_configurations.SnowBot);
 
             rainBotService.CheckWeather(weatherData.Humidity);
             sunBotService.CheckWeather(weatherData.Temperature);
