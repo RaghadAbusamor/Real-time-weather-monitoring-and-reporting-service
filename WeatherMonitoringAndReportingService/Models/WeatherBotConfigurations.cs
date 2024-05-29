@@ -1,6 +1,6 @@
-﻿using WeatherMonitoringAndReportingService.Models.Bots;
+﻿using WeatherMonitoringAndReportingService.WeatherMonitoringAndReportingService.Models.Bots;
 
-namespace WeatherMonitoringAndReportingService.Models
+namespace WeatherMonitoringAndReportingService.WeatherMonitoringAndReportingService.Models
 {
     public class WeatherBotConfigurations
     {

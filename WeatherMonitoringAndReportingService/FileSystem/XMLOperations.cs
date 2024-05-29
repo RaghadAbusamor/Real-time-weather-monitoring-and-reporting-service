@@ -1,8 +1,8 @@
 ﻿using System.Xml.Serialization;
 using WeatherMonitoringAndReportingService.Interfaces;
-using WeatherMonitoringAndReportingService.Models.WeatherDataModels;
+using WeatherMonitoringAndReportingService.WeatherMonitoringAndReportingService.Models.WeatherDataModels;
 
-namespace WeatherMonitoringAndReportingService.FileSystem
+namespace WeatherMonitoringAndReportingService.WeatherMonitoringAndReportingService.FileSystem
 {
     public class XMLOperations<T> : IInputFormat<T>
     {

@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using WeatherMonitoringAndReportingService.Interfaces;
 
-namespace WeatherMonitoringAndReportingService.Models
+namespace WeatherMonitoringAndReportingService.WeatherMonitoringAndReportingService.Models
 {
     public class BotConfiguration : IWeatherBot
     {

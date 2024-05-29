@@ -1,7 +1,7 @@
-﻿using WeatherMonitoringAndReportingService.Models;
-using WeatherMonitoringAndReportingService.Services.BotConfigurationsServices;
+﻿using WeatherMonitoringAndReportingService.WeatherMonitoringAndReportingService.Models;
+using WeatherMonitoringAndReportingService.WeatherMonitoringAndReportingService.Services.BotConfigurationsServices;
 
-namespace WeatherMonitoringAndReportingService.Services.BotsServices
+namespace WeatherMonitoringAndReportingService.WeatherMonitoringAndReportingService.Services.BotsServices
 {
     public class SnowBotService : CheckWeatherService
     {

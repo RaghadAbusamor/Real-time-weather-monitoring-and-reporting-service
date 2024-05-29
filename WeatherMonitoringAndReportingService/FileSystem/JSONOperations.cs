@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using WeatherMonitoringAndReportingService.Interfaces;
 
-namespace WeatherMonitoringAndReportingService.FileSystem
+namespace WeatherMonitoringAndReportingService.WeatherMonitoringAndReportingService.FileSystem
 {
     public class JSONOperations<T> : IInputFormat<T>
     {

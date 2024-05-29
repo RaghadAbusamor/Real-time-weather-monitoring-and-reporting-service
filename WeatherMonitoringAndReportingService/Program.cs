@@ -1,6 +1,6 @@
 ﻿using WeatherMonitoringAndReportingService.Services.BotConfigurationsServices;
 
-namespace WeatherMonitoringAndReportingService
+namespace WeatherMonitoringAndReportingService.WeatherMonitoringAndReportingService
 {
     class Program
     {
