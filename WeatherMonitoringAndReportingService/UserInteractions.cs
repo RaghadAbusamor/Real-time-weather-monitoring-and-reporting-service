@@ -1,12 +1,11 @@
-﻿using WeatherMonitoringAndReportingService.Enums;
-using WeatherMonitoringAndReportingService.FileSystem;
-using WeatherMonitoringAndReportingService.Models;
-using WeatherMonitoringAndReportingService.Models.WeatherDataModels;
-using WeatherMonitoringAndReportingService.Services.BotConfigurationsServices;
+﻿using WeatherMonitoringAndReportingService.Services.BotConfigurationsServices;
 using WeatherMonitoringAndReportingService.Services.BotsServices;
+using WeatherMonitoringAndReportingService.WeatherMonitoringAndReportingService.Enums;
+using WeatherMonitoringAndReportingService.WeatherMonitoringAndReportingService.FileSystem;
+using WeatherMonitoringAndReportingService.WeatherMonitoringAndReportingService.Models;
+using WeatherMonitoringAndReportingService.WeatherMonitoringAndReportingService.Models.WeatherDataModels;
 
-
-namespace WeatherMonitoringAndReportingService
+namespace WeatherMonitoringAndReportingService.WeatherMonitoringAndReportingService
 {
     public class UserInteractions
     {
@@ -34,6 +33,7 @@ namespace WeatherMonitoringAndReportingService
             string userInput = Console.ReadLine()?.Trim().ToLower();
 
             if (Enum.TryParse<DataFormat>(userInput, true, out DataFormat format))
+
             {
                 switch (format)
                 {
@@ -113,6 +113,7 @@ namespace WeatherMonitoringAndReportingService
             snowBotService.CheckWeather(weatherData.Temperature);
 
            await Task.CompletedTask; 
+
         }
     }
 }

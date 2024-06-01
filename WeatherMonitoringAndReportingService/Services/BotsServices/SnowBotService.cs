@@ -1,7 +1,7 @@
-﻿using WeatherMonitoringAndReportingService.Models;
-using WeatherMonitoringAndReportingService.Services.BotConfigurationsServices;
+﻿using WeatherMonitoringAndReportingService.WeatherMonitoringAndReportingService.Models;
+using WeatherMonitoringAndReportingService.WeatherMonitoringAndReportingService.Services.BotConfigurationsServices;
 
-namespace WeatherMonitoringAndReportingService.Services.BotsServices
+namespace WeatherMonitoringAndReportingService.WeatherMonitoringAndReportingService.Services.BotsServices
 {
     public class SnowBotService : CheckWeatherService
     {
@@ -17,11 +17,13 @@ namespace WeatherMonitoringAndReportingService.Services.BotsServices
                 {
                     Message  = _configuration.Message;
                     Console.WriteLine(Message);
+
                 }
             }
             catch (Exception ex)
             {
                 Message = null;
+
                 Console.WriteLine($"An error occurred while checking weather for SnowBot: {ex.Message}");
             }
         }

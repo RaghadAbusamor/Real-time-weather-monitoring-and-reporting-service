@@ -1,4 +1,4 @@
-﻿namespace WeatherMonitoringAndReportingService.Enums
+﻿namespace WeatherMonitoringAndReportingService.WeatherMonitoringAndReportingService.Enums
 {
     public enum DataFormat
     {

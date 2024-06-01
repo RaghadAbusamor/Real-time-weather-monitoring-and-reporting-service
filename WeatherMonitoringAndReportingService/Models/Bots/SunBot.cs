@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace WeatherMonitoringAndReportingService.Models.Bots
+using WeatherMonitoringAndReportingService.WeatherMonitoringAndReportingService.Models;
+
+namespace WeatherMonitoringAndReportingService.WeatherMonitoringAndReportingService.Models.Bots
 {
     public class SunBot : BotConfiguration
     {

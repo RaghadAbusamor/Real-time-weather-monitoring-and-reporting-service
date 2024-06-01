@@ -17,7 +17,6 @@ namespace WeatherMonitoringAndReportingService.Services.BotConfigurationsService
                 if (_configuration.Enabled && threshold >= _configuration.Threshold)
                 {
                    Message = _configuration.Message;
-                  //  Console.WriteLine(Message);
                 }
             }
             catch (Exception ex)
