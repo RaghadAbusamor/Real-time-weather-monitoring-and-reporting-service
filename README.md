@@ -34,3 +34,5 @@ All the bot's settings should be controlled via a configuration file, including 
 In this example, the enabled property turns the bot on or off, the humidityThreshold or temperatureThreshold sets the limit that will activate the bot, and message is what the bot will output when it is activated.
 
 Interns need to implement functionality to read this configuration file at the start of the application, and adjust the behavior of the bots according to the given settings.
+
+[![build and test](https://github.com/RaghadAbusamor/Real-time-weather-monitoring-and-reporting-service/actions/workflows/build-and-test.yml/badge.svg?branch=main)](https://github.com/RaghadAbusamor/Real-time-weather-monitoring-and-reporting-service/actions/workflows/build-and-test.yml)
