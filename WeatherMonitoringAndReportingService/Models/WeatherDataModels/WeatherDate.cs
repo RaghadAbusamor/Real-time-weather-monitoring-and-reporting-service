@@ -1,3 +1,4 @@
+
 ﻿namespace WeatherMonitoringAndReportingService.WeatherMonitoringAndReportingService.Models.WeatherDataModels
 {
     public class WeatherData

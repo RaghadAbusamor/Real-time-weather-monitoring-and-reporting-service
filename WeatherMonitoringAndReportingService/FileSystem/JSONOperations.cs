@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using WeatherMonitoringAndReportingService.Interfaces;
-
 namespace WeatherMonitoringAndReportingService.WeatherMonitoringAndReportingService.FileSystem
 {
     public class JSONOperations<T> : IInputFormat<T>
@@ -17,6 +16,11 @@ namespace WeatherMonitoringAndReportingService.WeatherMonitoringAndReportingServ
                 string json = await File.ReadAllTextAsync(filePath);
                 return JsonConvert.DeserializeObject<T>(json);
             }
+            catch(FileNotFoundException)
+            {
+                throw;
+            }
+
             catch (Exception ex)
             {
                 Console.WriteLine($"An error occurred while parsing JSON from file: {ex.Message}");

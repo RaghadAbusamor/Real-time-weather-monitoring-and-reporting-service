@@ -1,21 +1,29 @@
 ﻿using WeatherMonitoringAndReportingService.WeatherMonitoringAndReportingService.Models;
 
-namespace WeatherMonitoringAndReportingService.WeatherMonitoringAndReportingService.Services.BotConfigurationsServices
+namespace WeatherMonitoringAndReportingService.Services.BotConfigurationsServices
 {
     public class CheckWeatherService
     {
-        public BotConfiguration Configuration { get; }
+
+        public BotConfiguration _configuration { get; set; }
+        public string Message { get;  set; }
+        public CheckWeatherService(BotConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
         public virtual void CheckWeather(double threshold)
         {
             try
             {
-                if (Configuration.Enabled && threshold >= Configuration.Threshold)
+                if (_configuration.Enabled && threshold >= _configuration.Threshold)
                 {
-                    Console.WriteLine(Configuration.Message);
+                   Message = _configuration.Message;
                 }
             }
             catch (Exception ex)
             {
+                Message = null;
                 Console.WriteLine($"An error occurred while checking weather: {ex.Message}");
             }
         }

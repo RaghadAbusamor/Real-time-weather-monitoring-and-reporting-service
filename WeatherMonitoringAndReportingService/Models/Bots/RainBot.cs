@@ -3,7 +3,6 @@ using WeatherMonitoringAndReportingService.WeatherMonitoringAndReportingService.
 
 namespace WeatherMonitoringAndReportingService.WeatherMonitoringAndReportingService.Models.Bots
 {
-
     public class RainBot : BotConfiguration
     {
         [JsonProperty("humidity_threshold")]

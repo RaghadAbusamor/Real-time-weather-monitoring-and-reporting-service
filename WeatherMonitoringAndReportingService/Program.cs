@@ -1,4 +1,4 @@
-﻿using WeatherMonitoringAndReportingService.Services.BotConfigurationsServices;
+﻿using WeatherMonitoringAndReportingService.Services.BotConfigurationsServices.WeatherMonitoringAndReportingService.WeatherMonitoringAndReportingService.Services.BotConfigurationsServices;
 
 namespace WeatherMonitoringAndReportingService.WeatherMonitoringAndReportingService
 {

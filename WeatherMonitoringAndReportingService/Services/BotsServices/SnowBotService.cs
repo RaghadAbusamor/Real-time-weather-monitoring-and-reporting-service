@@ -1,13 +1,11 @@
-﻿using WeatherMonitoringAndReportingService.WeatherMonitoringAndReportingService.Models;
-using WeatherMonitoringAndReportingService.WeatherMonitoringAndReportingService.Services.BotConfigurationsServices;
+﻿using WeatherMonitoringAndReportingService.Services.BotConfigurationsServices;
+using WeatherMonitoringAndReportingService.WeatherMonitoringAndReportingService.Models;
 
 namespace WeatherMonitoringAndReportingService.WeatherMonitoringAndReportingService.Services.BotsServices
 {
     public class SnowBotService : CheckWeatherService
     {
-        private readonly BotConfiguration _configuration;
-
-        public SnowBotService(BotConfiguration configuration)
+        public SnowBotService(BotConfiguration configuration) : base(configuration)
         {
             _configuration = configuration;
         }
@@ -17,11 +15,15 @@ namespace WeatherMonitoringAndReportingService.WeatherMonitoringAndReportingServ
             {
                 if (_configuration != null && _configuration.Enabled && Threshold <= _configuration.Threshold)
                 {
-                    Console.WriteLine(_configuration.Message);
+                    Message  = _configuration.Message;
+                    Console.WriteLine(Message);
+
                 }
             }
             catch (Exception ex)
             {
+                Message = null;
+
                 Console.WriteLine($"An error occurred while checking weather for SnowBot: {ex.Message}");
             }
         }
