@@ -1,3 +1,5 @@
+[![build and test](https://github.com/RaghadAbusamor/Real-time-weather-monitoring-and-reporting-service/actions/workflows/build-and-test.yml/badge.svg?branch=main)](https://github.com/RaghadAbusamor/Real-time-weather-monitoring-and-reporting-service/actions/workflows/build-and-test.yml)
+
 🌦️ General Task Description:
 
 Design and implement a C# console application that simulates a real-time weather monitoring and reporting service. The system should be capable of receiving and processing raw weather data in multiple formats (JSON, XML, etc.) from various weather stations for different locations. The application should include different types of 'weather bots' each of which is configured to behave differently based on the weather updates it receives.
@@ -35,4 +37,3 @@ In this example, the enabled property turns the bot on or off, the humidityThres
 
 Interns need to implement functionality to read this configuration file at the start of the application, and adjust the behavior of the bots according to the given settings.
 
-[![build and test](https://github.com/RaghadAbusamor/Real-time-weather-monitoring-and-reporting-service/actions/workflows/build-and-test.yml/badge.svg?branch=main)](https://github.com/RaghadAbusamor/Real-time-weather-monitoring-and-reporting-service/actions/workflows/build-and-test.yml)
