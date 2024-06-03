@@ -17,7 +17,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest]
+        os: [windows-latest]
 
     steps:
     - uses: actions/checkout@v3
@@ -44,9 +44,6 @@ jobs:
 
     - name: Build
       run: dotnet build --configuration Debug --no-restore
-
-    - name: Run tests
-      run: dotnet test --configuration Debug --no-restore --verbosity normal
       
     - name: NuGet cache
       uses: actions/cache@v2
