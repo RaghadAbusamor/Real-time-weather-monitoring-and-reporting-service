@@ -1,5 +1,5 @@
-﻿using WeatherMonitoringAndReportingService.FileSystem;
-using WeatherMonitoringAndReportingService.Models.WeatherDataModels;
+﻿using WeatherMonitoringAndReportingService.WeatherMonitoringAndReportingService.FileSystem;
+using WeatherMonitoringAndReportingService.WeatherMonitoringAndReportingService.Models.WeatherDataModels;
 
 namespace WeatherMonitoringAndReportingService
 {

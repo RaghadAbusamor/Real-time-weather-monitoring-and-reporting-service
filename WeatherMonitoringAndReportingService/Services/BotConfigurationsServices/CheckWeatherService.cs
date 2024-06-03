@@ -1,15 +1,17 @@
-﻿using WeatherMonitoringAndReportingService.Models;
+﻿using WeatherMonitoringAndReportingService.WeatherMonitoringAndReportingService.Models;
 
 namespace WeatherMonitoringAndReportingService.Services.BotConfigurationsServices
 {
     public class CheckWeatherService
     {
+
         public BotConfiguration _configuration { get; set; }
         public string Message { get;  set; }
         public CheckWeatherService(BotConfiguration configuration)
         {
             _configuration = configuration;
         }
+
         public virtual void CheckWeather(double threshold)
         {
             try

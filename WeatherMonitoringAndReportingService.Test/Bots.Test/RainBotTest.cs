@@ -1,8 +1,6 @@
 ﻿using AutoFixture;
-using WeatherMonitoringAndReportingService.Models;
-using WeatherMonitoringAndReportingService.Models.WeatherDataModels;
-using WeatherMonitoringAndReportingService.Models.Bots;
-using WeatherMonitoringAndReportingService.Services.BotsServices;
+using WeatherMonitoringAndReportingService.WeatherMonitoringAndReportingService.Models;
+using WeatherMonitoringAndReportingService.WeatherMonitoringAndReportingService.Services.BotsServices;
 
 namespace WeatherMonitoringAndReportingService.Test.Bots.Test
 {
