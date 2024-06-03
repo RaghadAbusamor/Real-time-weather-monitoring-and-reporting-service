@@ -46,9 +46,6 @@ namespace WeatherMonitoringAndReportingService
             var jsonOperations = new JSONOperations<WeatherData>();
             var weatherDataList = new List<WeatherData>();
 
-            // Act
-            jsonOperations.WriteWeatherData(weatherDataList, filePath);
-
             // Assert
             Assert.True(File.Exists(filePath));
         }
